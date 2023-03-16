@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}...`);
+});
+
 let products = [{
   id: 1,
   name: "nasi goreng",
@@ -112,9 +116,6 @@ app.delete("/api", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}...`);
-});
 
 // const http = require('http');
 // const PORT = 2000;

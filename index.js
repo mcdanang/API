@@ -80,7 +80,10 @@ app.patch("/api", (req, res) => {
       message: "product ID not exist"
     })
   } else {
-    products[index] = updatedProduct;
+    const keys = Object.keys(updatedProduct);
+    for (let key of keys) {
+      products[index][key] = updatedProduct[key];
+    }
     res.json({
       status: 'ok',
       message: "data successfully updated"

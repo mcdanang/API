@@ -49,9 +49,14 @@ app.put("/api", (req, res) => {
   const index = productsId.indexOf(replacedProduct.id);
 
   if (index === -1) {
+    const newId = Math.max(...productsId) + 1;
+    products.push({
+      id: newId,
+      ...replacedProduct
+    });
     res.json({
-      status: 'error',
-      message: "product ID not exist"
+      status: 'ok',
+      message: "data successfully created"
     })
   } else {
     products[index] = replacedProduct;
